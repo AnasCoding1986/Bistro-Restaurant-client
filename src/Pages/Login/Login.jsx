@@ -4,6 +4,7 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-s
 import { AuthContext } from '../../Provider/AuthProvider';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import Swal from 'sweetalert2';
 
 const Login = () => {
 
@@ -26,6 +27,23 @@ const Login = () => {
             .then(res => {
                 const user = res.user;
                 console.log(user);
+                Swal.fire({
+                    title: "Login Successful",
+                    showClass: {
+                      popup: `
+                        animate__animated
+                        animate__fadeInUp
+                        animate__faster
+                      `
+                    },
+                    hideClass: {
+                      popup: `
+                        animate__animated
+                        animate__fadeOutDown
+                        animate__faster
+                      `
+                    }
+                  });
             })
     }
 
@@ -70,8 +88,7 @@ const Login = () => {
                                 <label className="label">
                                     <LoadCanvasTemplate />
                                 </label>
-                                <input type="text" ref={capthaRef} placeholder="type capcha" name="capcha" className="input input-bordered" required />
-                                <button onClick={handleValidateCapcha} className="btn btn-xs mt-2">Button</button>
+                                <input onBlur={handleValidateCapcha} type="text" ref={capthaRef} placeholder="type capcha" name="capcha" className="input input-bordered" required />
                             </div>
                             <div className="form-control mt-6">
                                 <input disabled={disabled} type="submit" value="Login" className="btn btn-primary" />
