@@ -2,13 +2,14 @@ import { CiCircleList } from "react-icons/ci";
 import { FaAd, FaBook, FaBookmark, FaCalendar, FaHome, FaShoppingCart, FaUtensils } from "react-icons/fa";
 import { FaHouseMedical, FaUsersLine } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../Hooks/useAdmin";
 
 
 const Dashboard = () => {
 
     // todo
     // get the admin value from the Database;
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
 
     return (
         <div className="flex">
