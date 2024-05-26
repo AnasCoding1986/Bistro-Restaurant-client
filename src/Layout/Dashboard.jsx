@@ -22,7 +22,7 @@ const Dashboard = () => {
                                     <NavLink to='/dashboard/userHome'><FaHome></FaHome>Admin Home</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to='/dashboard/reservation'><FaUtensils />Add Items</NavLink>
+                                    <NavLink to='addItems'><FaUtensils />Add Items</NavLink>
                                 </li>
                                 <li>
                                     <NavLink to='/dashboard/cart'><CiCircleList />Manage Items</NavLink>
