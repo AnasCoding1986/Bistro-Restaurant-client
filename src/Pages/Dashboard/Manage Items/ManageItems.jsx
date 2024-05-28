@@ -3,11 +3,11 @@ import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import useMenu from "../../../Hooks/useMenu";
 import Swal from "sweetalert2";
 import UseAiosSecure from "../../../Hooks/UseAiosSecure";
-// import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import { Link } from "react-router-dom";
 
 
 const ManageItems = () => {
-    const [menu] = useMenu();
+    const [menu, , refetch] = useMenu();
     const axiosSecure = UseAiosSecure();
     // const axiosPublic = useAxiosPublic();
     const handleDeleteItem = (item) => {
@@ -19,23 +19,24 @@ const ManageItems = () => {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
-          }).then(async(result) => {
+        }).then(async (result) => {
             console.log(result);
             if (result.isConfirmed) {
 
                 const res = await axiosSecure.delete(`/menu/${item._id}`);
                 console.log(res.data);
-                if (res.data.deletedCount>0) {
+                if (res.data.deletedCount > 0) {
+                    refetch();
                     Swal.fire({
                         title: "Deleted!",
                         text: "Your file has been deleted.",
                         icon: "success"
-                      });
+                    });
                 }
 
 
             }
-          });
+        });
     }
     return (
         <div>
@@ -76,10 +77,12 @@ const ManageItems = () => {
                                     </td>
                                     <td className="text-right">${item.price}</td>
                                     <td>
-                                        <button
-                                            className="btn btn-sm bg-orange-500 text-yellow-600">
-                                            <FaEdit className="text-white"></FaEdit>
-                                        </button>
+                                        <Link to={`/dashboard/updateItem/${item._id}`}>
+                                            <button
+                                                className="btn btn-sm bg-orange-500 text-yellow-600">
+                                                <FaEdit className="text-white"></FaEdit>
+                                            </button>
+                                        </Link>
                                     </td>
                                     <td>
                                         <button
