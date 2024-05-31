@@ -28,7 +28,7 @@ const Dashboard = () => {
                                     <NavLink to='manageItems'><CiCircleList />Manage Items</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to='/dashboard/review'><FaBookmark />Manage bookings</NavLink>
+                                    <NavLink to='/dashboard/paymentHistry'><FaBookmark />Payment real histry</NavLink>
                                 </li>
                                 <li>
                                     <NavLink to='users'><FaUsersLine />All users</NavLink>
